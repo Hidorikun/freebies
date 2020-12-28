@@ -1,0 +1,8 @@
+<article class="notification is-danger">
+  <div class="content">
+    <p class="title">Favorites</p>
+    <div *ngIf="items.length === 0">Click on the star icon on the giveaways to mark them as favorite</div>
+    <app-freebies-list [cards]="false" [items]="items" (delete)="delete($event)"></app-freebies-list>
+  </div>
+</article>
+

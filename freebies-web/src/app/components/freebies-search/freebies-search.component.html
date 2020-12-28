@@ -1,0 +1,36 @@
+<div class="tile is-ancestor is-vertical ">
+    <div class="tile is-parent">
+        <article class="tile is-child notification is-primary">
+            <div class="content">
+                <p class="title">Welcome to Freebies!</p>
+                <p class="subtitle">Here you can find what free gaming related items you can get right now.</p>
+                <div class="content is-flex">
+                  <div class="field">
+                    <div class="control">
+                      <div class="select">
+                        <select [ngModel]="filter.platform" (ngModelChange)="changePlatform($event)">
+                          <option value="">All Platforms</option>
+                          <option *ngFor="let option of platformOptions" [value]="option">{{option}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <div class="select">
+                        <select [ngModel]="filter.type" (ngModelChange)="changeType($event)">
+                          <option value="">All Giveaway Types</option>
+                          <option *ngFor="let option of giveawayTypeOptions" [value]="option">{{option}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="tile is-parent">
+        <h1 *ngIf="items.length === 0">No giveaways here at this time.</h1>
+        <app-freebies-list [cards]="true" [items]="items" (bookmark)="addFavorite($event)"></app-freebies-list>
+    </div>
+</div>

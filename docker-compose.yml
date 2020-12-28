@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - 27017:27017
+
+  freebies-app:
+    container_name: freebies-app
+    restart: always
+    build: ./freebies-app
+    volumes:
+      - ./freebies-app:/usr/src/freebies-app
+    ports:
+      - 4100:4100
+    links:
+      - freebies-favorites
+      - freebies-search
+
+  freebies-search:
+    container_name: freebies-search
+    restart: always
+    build: ./freebies-search
+    volumes:
+      - ./freebies-search:/usr/src/freebies-search
+    ports:
+      - 4101:4101
+
+  freebies-favorites:
+    container_name: freebies-favorites
+    restart: always
+    build: ./freebies-favorites
+    volumes:
+      - ./freebies-favorites:/usr/src/freebies-favorites
+    ports:
+      - 4102:4102
+    links:
+      - mongo
+
+  freebies-web:
+    container_name: freebies-web
+    restart: always
+    build: ./freebies-web
+    volumes:
+      - ./freebies-web:/usr/src/freebies-web
+    ports:
+      - 4200:4200
+    links:
+      - freebies-app
+
+

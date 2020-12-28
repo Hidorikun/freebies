@@ -1,0 +1,92 @@
+.browse-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.browse-card {
+    width: 230px;
+
+    margin: 0 0 1.25rem 1rem;
+
+
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    color: #4a4a4a;
+}
+
+.browse-image {
+    margin: 0;
+    height: auto;
+
+    background-image: url('../../../assets/gift.png');
+    background-size: 100%;
+
+    img {
+      border-radius: 5px 5px 0 0;
+    }
+}
+
+.card-overlay {
+    position:relative;
+}
+
+.star {
+    position: absolute;
+    left: 87%;
+    z-index: 3;
+    font-size: 1.5rem;
+    color: gold;
+    cursor: pointer;
+}
+
+.bookmark {
+    position: absolute;
+    left: 85%;
+    top: -13px;
+    z-index: 2;
+    font-size: 3rem;
+    color: #ff3860;
+}
+
+.fav-image {
+    margin: 0;
+    height: auto;
+}
+
+.fav-card {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    color: #4a4a4a;
+    display: grid;
+    grid-template-columns: 90px auto 20px;
+    grid-template-rows: 50px;
+    margin-bottom: 0.25rem;
+    background-size: cover;
+}
+
+.fav-img {
+    border-radius: 5px 0 0 5px;
+}
+
+.fav-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.delete {
+    margin-top: 15px;
+}
+
+.star:hover {
+    animation: rotate-center 1.6s linear infinite ;
+}
+@keyframes rotate-center {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
