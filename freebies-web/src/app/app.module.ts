@@ -7,8 +7,8 @@ import { FreebiesListComponent } from './components/freebies-list/freebies-list.
 import {HttpClientModule} from '@angular/common/http';
 import { FreebiesSearchComponent } from './components/freebies-search/freebies-search.component';
 import { FreebiesFavoritesComponent } from './components/freebies-favorites/freebies-favorites.component';
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {FormsModule} from "@angular/forms";
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [

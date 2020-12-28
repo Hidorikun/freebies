@@ -19,7 +19,4 @@ export class FreebiesFavoritesComponent implements OnInit {
   delete(id: string) {
     this.service.delete(id);
   }
-
-  add(item: any) {
-  }
 }
