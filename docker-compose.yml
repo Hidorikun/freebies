@@ -11,8 +11,8 @@ services:
     container_name: freebies-app
     restart: always
     build: ./freebies-app
-    volumes:
-      - ./freebies-app:/usr/src/freebies-app
+#    volumes:
+#      - ./freebies-app:/usr/src/freebies-app
     ports:
       - 4100:4100
     links:
@@ -23,8 +23,8 @@ services:
     container_name: freebies-search
     restart: always
     build: ./freebies-search
-    volumes:
-      - ./freebies-search:/usr/src/freebies-search
+#    volumes:
+#      - ./freebies-search:/usr/src/freebies-search
     ports:
       - 4101:4101
 
@@ -32,8 +32,8 @@ services:
     container_name: freebies-favorites
     restart: always
     build: ./freebies-favorites
-    volumes:
-      - ./freebies-favorites:/usr/src/freebies-favorites
+#    volumes:
+#      - ./freebies-favorites:/usr/src/freebies-favorites
     ports:
       - 4102:4102
     links:
@@ -43,8 +43,8 @@ services:
     container_name: freebies-web
     restart: always
     build: ./freebies-web
-    volumes:
-      - ./freebies-web:/usr/src/freebies-web
+#    volumes:
+#      - ./freebies-web:/usr/src/freebies-web
     ports:
       - 4200:4200
     links:
