@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FreebiesService} from '../../services/freebies.service';
+import {FreebiesService} from '../../../services/freebies.service';
 
 @Component({
   selector: 'app-freebies-search',

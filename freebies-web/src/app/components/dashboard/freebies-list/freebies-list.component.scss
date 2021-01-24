@@ -19,7 +19,7 @@
     margin: 0;
     height: auto;
 
-    background-image: url('../../../assets/gift.png');
+    background-image: url('../../../../assets/gift.png');
     background-size: 100%;
 
     img {
@@ -60,7 +60,7 @@
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
     color: #4a4a4a;
     display: grid;
-    grid-template-columns: 90px auto 20px;
+    grid-template-columns: 90px auto 26px;
     grid-template-rows: 50px;
     margin-bottom: 0.25rem;
     background-size: cover;
