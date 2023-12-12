@@ -1,0 +1,184 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo-stateful-set
+spec:
+  replicas: 1  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: mongo-pod
+  template:
+    metadata:
+      labels:
+        app: mongo-pod
+    spec:
+      containers:
+        - name: mongo-container
+          image: mongo:latest  # Replace with your Docker image URL
+          ports:
+            - containerPort: 27017  # Port your application listens on
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+spec:
+  selector:
+    app: mongo-pod
+  ports:
+    - protocol: TCP
+      port: 27017  # Port on the service
+      targetPort: 27017  # Port on the pods
+  type: ClusterIP  # Can be accessed only internally
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: freebies-app-deployment
+spec:
+  replicas: 1  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: freebies-app-pod
+  template:
+    metadata:
+      labels:
+        app: freebies-app-pod
+    spec:
+      containers:
+        - name: freebies-app-container
+          image: hidorikun.azurecr.io/freebies/freebies-app:latest  # Replace with your Docker image URL
+          ports:
+            - containerPort: 4100  # Port your application listens on
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: freebies-app
+spec:
+  selector:
+    app: freebies-app-pod
+  ports:
+    - protocol: TCP
+      port: 4100  # Port on the service
+      targetPort: 4100  # Port on the pods
+  type: ClusterIP  # Can be accessed only internally
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: freebies-favorites-deployment
+spec:
+  replicas: 1  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: freebies-favorites-pod
+  template:
+    metadata:
+      labels:
+        app: freebies-favorites-pod
+    spec:
+      containers:
+        - name: freebies-favorites-container
+          image: hidorikun.azurecr.io/freebies/freebies-favorites:latest  # Replace with your Docker image URL
+          ports:
+            - containerPort: 4102  # Port your application listens on
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: freebies-favorites
+spec:
+  selector:
+    app: freebies-favorites-pod
+  ports:
+    - protocol: TCP
+      port: 4102  # Port on the service
+      targetPort: 4102  # Port on the pods
+  type: ClusterIP  # Can be accessed only internally
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: freebies-search-deployment
+spec:
+  replicas: 1  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: freebies-search-pod
+  template:
+    metadata:
+      labels:
+        app: freebies-search-pod
+    spec:
+      containers:
+        - name: freebies-search-container
+          image: hidorikun.azurecr.io/freebies/freebies-search:latest  # Replace with your Docker image URL
+          ports:
+            - containerPort: 4101  # Port your application listens on
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: freebies-search
+spec:
+  selector:
+    app: freebies-search-pod
+  ports:
+    - protocol: TCP
+      port: 4101  # Port on the service
+      targetPort: 4101  # Port on the pods
+  type: ClusterIP  # Can be accessed only internally
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: freebies-web-deployment
+spec:
+  replicas: 1  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: freebies-web-pod
+  template:
+    metadata:
+      labels:
+        app: freebies-web-pod
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: freebies-web-container
+          image: hidorikun.azurecr.io/freebies/freebies-web:1.0.0  # Replace with your Docker image URL
+          ports:
+            - containerPort: 4200  # Port your application listens on
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: freebies-web
+spec:
+  selector:
+    app: freebies-web-pod
+  ports:
+    - protocol: TCP
+      port: 80  # Port on the service
+      targetPort: 4200  # Port on the pods
+  type: LoadBalancer  # Can be accessed only internally
